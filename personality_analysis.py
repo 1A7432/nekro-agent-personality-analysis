@@ -323,10 +323,20 @@ async def analyze_big_five_personality(input_data: str) -> BigFiveScore:
             base_url=model_group.BASE_URL,
             api_key=model_group.API_KEY,
             temperature=0.3,
-            max_tokens=500,
+            max_tokens=800,
         )
 
         content = response.response_content.strip()
+        if not content:
+            core.logger.warning("大五人格分析返回内容为空，使用默认值")
+            return BigFiveScore(
+                openness=50,
+                conscientiousness=50,
+                extraversion=50,
+                agreeableness=50,
+                neuroticism=50,
+            )
+
         json_match = re.search(r"\{.*\}", content, re.DOTALL)
         if json_match:
             content = json_match.group()
@@ -384,10 +394,18 @@ async def analyze_mbti_type(input_data: str) -> MBTIResult:
             base_url=model_group.BASE_URL,
             api_key=model_group.API_KEY,
             temperature=0.3,
-            max_tokens=600,
+            max_tokens=1000,
         )
 
         content = response.response_content.strip()
+        if not content:
+            core.logger.warning("MBTI分析返回内容为空，使用默认值")
+            return MBTIResult(
+                mbti_type="XXXX",
+                confidence=0.5,
+                dimension_scores={"E-I": 0.5, "S-N": 0.5, "T-F": 0.5, "J-P": 0.5},
+            )
+
         json_match = re.search(r"\{.*\}", content, re.DOTALL)
         if json_match:
             content = json_match.group()
