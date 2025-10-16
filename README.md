@@ -189,7 +189,7 @@ MIT License
 
 ## 👥 作者
 
-- GitHub: [@1A7432](https://github.com/1A7432)
+- GitHub: [@A1A7432](https://github.com/1A7432)
 
 ## 🙏 致谢
 

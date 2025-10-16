@@ -41,7 +41,7 @@ plugin = NekroPlugin(
     module_name="personality_analysis",
     description="基于聊天记录分析用户性格特征，生成大五人格和MBTI分析报告",
     version="0.1.0",
-    author="1A7432",
+    author="A1A7432",
     url="https://github.com/1A7432/nekro-agent-personality-analysis",
     support_adapter=["onebot_v11", "discord", "telegram", "wechatpad", "wxwork"],
 )
