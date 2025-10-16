@@ -93,7 +93,7 @@ class PersonalityAnalysisConfig(ConfigBase):
         json_schema_extra={"ref_model_groups": True, "required": True, "model_type": "chat"},
     )
     MAX_ANALYSIS_TOKENS: int = Field(
-        default=2048,
+        default=8192,
         title="最大分析Token数",
         description="单次分析的最大输出Token数（用于LLM响应）",
     )
@@ -323,7 +323,7 @@ async def analyze_big_five_personality(input_data: str) -> BigFiveScore:
             base_url=model_group.BASE_URL,
             api_key=model_group.API_KEY,
             temperature=0.3,
-            max_tokens=1024,
+            max_tokens=4096,
         )
 
         content = response.response_content.strip()
@@ -394,7 +394,7 @@ async def analyze_mbti_type(input_data: str) -> MBTIResult:
             base_url=model_group.BASE_URL,
             api_key=model_group.API_KEY,
             temperature=0.3,
-            max_tokens=1024,
+            max_tokens=4096,
         )
 
         content = response.response_content.strip()
