@@ -47,13 +47,13 @@ AI会自动调用插件进行分析，并返回详细的性格分析报告。
 ### 通过代码调用
 
 ```python
-# 在沙盒环境中调用
-/exec analyze_user_personality(chat_key, "user_12345", 30, 500, False)
+# 在沙盒环境中调用（使用 _ck 代表当前聊天频道）
+/exec analyze_user_personality(_ck, "user_12345", 30, 500, False)
 ```
 
 ### 参数说明
 
-- `chat_key`: 聊天频道标识（自动获取）
+- `chat_key`: 聊天频道标识（在沙盒中使用 `_ck`）
 - `target_userid`: 目标用户的平台ID
 - `days`: 分析时间范围（天），默认30天
 - `max_messages`: 最大分析消息数，默认500条

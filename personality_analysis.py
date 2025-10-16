@@ -646,7 +646,7 @@ async def analyze_user_personality(
     Analyze a user's personality based on their chat history and generate a detailed report.
 
     Args:
-        chat_key (str): Chat channel identifier
+        chat_key (str): Chat channel identifier (use _ck in sandbox)
         target_userid (str): Target user's platform ID
         days (int): Analysis time range in days (e.g., 30 for last 30 days)
         max_messages (int): Maximum number of messages to analyze (e.g., 500)
@@ -656,7 +656,7 @@ async def analyze_user_personality(
         str: Markdown formatted personality analysis report
 
     Example:
-        analyze_user_personality(chat_key, "user_12345", 30, 500, False)
+        analyze_user_personality(_ck, "user_12345", 30, 500, False)
     """
     if not target_userid:
         raise ValueError("Error: Target user ID cannot be empty!")
@@ -778,14 +778,14 @@ async def get_personality_report(_ctx: schemas.AgentCtx, chat_key: str, target_u
     Get a previously generated personality analysis report from cache.
 
     Args:
-        chat_key (str): Chat channel identifier
+        chat_key (str): Chat channel identifier (use _ck in sandbox)
         target_userid (str): Target user's platform ID
 
     Returns:
         str: Markdown formatted report or error message
 
     Example:
-        get_personality_report(chat_key, "user_12345")
+        get_personality_report(_ck, "user_12345")
     """
     cached_result = await get_cached_result(chat_key, target_userid)
     if not cached_result:
@@ -805,14 +805,14 @@ async def clear_personality_cache(_ctx: schemas.AgentCtx, chat_key: str, target_
     Clear the cached personality analysis for a specific user.
 
     Args:
-        chat_key (str): Chat channel identifier
+        chat_key (str): Chat channel identifier (use _ck in sandbox)
         target_userid (str): Target user's platform ID
 
     Returns:
         str: Success message
 
     Example:
-        clear_personality_cache(chat_key, "user_12345")
+        clear_personality_cache(_ck, "user_12345")
     """
     await clear_cache(chat_key, target_userid)
     return f"Successfully cleared personality analysis cache for user {target_userid}"
