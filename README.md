@@ -106,7 +106,7 @@ AI会自动调用插件进行分析，并返回详细的性格分析报告。
 | ENABLE_MBTI | True | 是否启用MBTI分析 |
 | ENABLE_BEHAVIOR_PATTERN | True | 是否启用行为模式识别 |
 | ANALYSIS_MODEL_GROUP | default | 用于性格分析的模型组 |
-| MAX_ANALYSIS_TOKENS | 4000 | 单次分析的最大Token数 |
+| MAX_ANALYSIS_TOKENS | 2048 | 单次分析的最大输出Token数 |
 
 ## 🔧 技术架构
 
